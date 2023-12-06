@@ -1,0 +1,11 @@
+<p>Listado Produits</p>
+<ul>
+  <li *ngFor="let produit of produitsLst$ | async">
+    {{ produit.brand }}
+    <br />
+    {{ produit.price }}
+    <br />
+    {{ produit.compagnie }}
+    <br /><br />
+  </li>
+</ul>

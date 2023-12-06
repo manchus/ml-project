@@ -1,0 +1,35 @@
+<p [ngStyle]="{ color: getStatus() }">
+  <span *ngIf="!adm"> Seul l'administrateur peut utiliser ce site !</span>
+  <span *ngIf="adm"> Bienvenue ! Vous êtes Admin !</span>
+</p>
+<h3 (click)="activons()">Cliquez ici ! Pour devenir Admin.</h3>
+
+<input type="text" value="{{ content }}" [disabled]="ecrire" />
+
+<button type="button" [disabled]="bloquer">{{ texte }}</button>
+
+<ul>
+  <li *ngFor="let voiture of voitures">
+    {{ voiture.title }}
+    <br />
+    {{ voiture.category }}
+    <br />
+    {{ voiture.sold }}
+    <br />
+    <br />
+  </li>
+</ul>
+<ul>
+  <li *ngFor="let voiture of voitures; let i = index">
+    {{ voiture.title }}
+    <br />
+    {{ voiture.category }}
+    <br />
+    <span [ngStyle]="{ color: getSoldValue(i) }">
+      <span *ngIf="voiture.sold"> Vendu</span>
+      <span *ngIf="!voiture.sold"> À vendre </span>
+    </span>
+    <br />
+    <br />
+  </li>
+</ul>
