@@ -1,1 +1,19 @@
-<p>home works!</p>
+<br>
+<div class="row">
+  <div class="col-sm-3"  *ngFor="let friandise of   friandisesList$ | async">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{friandise.brand}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{friandise.compagnie}}</h6>
+        <p class="card-text">{{friandise.cat}}</p>
+        <p class="card-text">{{friandise.price}}</p>
+        <button class="btn btn-danger m-1" type="button" (click)="OnDeleteFriandise(friandise._id)">
+          <i class="fas fa-trash-alt"></i>
+        </button>
+        <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Another link</a>
+      </div>
+    </div>
+    <br>
+  </div>
+</div>

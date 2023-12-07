@@ -52,6 +52,7 @@ export class AdminComponent implements OnInit{
   onSubmitFriandisesForm(){
 
     const newFriand :friandises= this.friandisesForm.value;
+   // console.log(newFriand);
     this.friandisesService.createFriandise(newFriand);
     this.friandisesForm.reset();
     $('#propertiesFormModal').modal('hide');
@@ -60,7 +61,7 @@ export class AdminComponent implements OnInit{
 }
 retourHome(){
 
-  this.router.navigate(['./home']);
+  this.router.navigate(['./admin']);
 
 }
 OnDeleteFriandise(id : any){
