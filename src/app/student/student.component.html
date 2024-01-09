@@ -4,21 +4,21 @@
     <table>
       <tr>
         <td>
-          <select name="codechoisi" id="codechoisi">
-              <option  *ngFor="let student of studentsLst$ | async">
-                {{student.code}}
+          <select #codechoisi name="codechoisi" id="codechoisi" (change)="stdData(codechoisi.value)">
+              <option  [value]="student.code" *ngFor="let student of studentsLst$ | async">
+               {{student.code}}
               </option>
           </select>
         </td>
-        <td><input type="button" id="boutton2" name="ok" value="ok" /></td>
+        <td><input type="button" id="boutton2" name="ok" value="ok" (click)="stdData(codechoisi.value)"/></td>
       </tr>
       <tr>
-        <td>Nom</td>
-        <td><input type="text" id="nom" value="   " />[student$.nom]</td>
+        <td>Nom:</td>
+        <td><input type="text" id="nom" [(ngModel)]="studentSel.nom" [ngModelOptions]="{standalone: true}"/></td>
       </tr>
       <tr>
         <td>Prénom</td>
-        <td><input type="text" id="prenom" value="  " /></td>
+        <td><input type="text" id="prenom" [(ngModel)]="studentSel.prenom" [ngModelOptions]="{standalone: true}"  /></td>
       </tr>
       <tr>
         <td>
@@ -40,4 +40,5 @@
       <input type="submit" name="search" value="recherche" />
     </form>
   </div>
+{{studentSel.nom}}
 </div>

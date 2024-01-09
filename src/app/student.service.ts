@@ -17,8 +17,11 @@ export class StudentService {
     return this.httpClient.get<students[]>(`${this.baseUrl}/studentLst`);
   }
 
-  Student(code: string ): Observable<students>{
-    return this.httpClient.get<students>(`${this.baseUrl}/studentRead/?codeaffiche=`+code );
+ // Student(code: string ): Observable<students>{
+  Student(code: string ){
+//    console.log("COdigo Studiante",code);
+//    console.log(`${this.baseUrl}/studentRead/?codeaffiche=`+code);
+    return this.httpClient.get<students>(`${this.baseUrl}/studentRead/?codeaffiche=`+code);
   }
 
 }

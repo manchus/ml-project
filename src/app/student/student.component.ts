@@ -1,7 +1,8 @@
-import { Component , OnInit } from '@angular/core';
+import { Component , OnInit, OnChanges } from '@angular/core';
 import { Observable } from 'rxjs';
 import { students } from 'src/app/models/modelBD';
 import { StudentService } from '../student.service';
+import { FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -12,16 +13,24 @@ import { StudentService } from '../student.service';
 export class StudentComponent implements OnInit {
   studentsLst$ :Observable<students[]> | undefined;
   student$ :Observable<students> | undefined;
+  studentSel :students={
+    nom: "",
+    prenom: "",
+    photo: ""
+  };
+  studentForm !: FormGroup;
+  variable :String="aaa";
 
   constructor(private studentService :StudentService) { }
 
   ngOnInit(): void{
     this.studentsLst$ = this.studentService.Students();
-
-    this.student$ = this.studentService.Student('CarDi');
-
-    console.log(this.studentsLst$);
-    console.log(this.student$);
   }
+
+  stdData(std:string){
+  //  this.student$ = this.studentService.Student(std);
+    this.studentService.Student(std).subscribe((res) => (this.studentSel = res));
+
+}
 
 }
